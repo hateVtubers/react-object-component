@@ -1,0 +1,31 @@
+{
+  "name": "json-component",
+  "version": "0.0.1",
+  "description": "A react component for json or object",
+  "types": "build/index.d.ts",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc -p ."
+  },
+  "files": [
+    "build/**"
+  ],
+  "keywords": [
+    "react",
+    "react-component",
+    "json"
+  ],
+  "author": "hateVtubers",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
