@@ -1,17 +1,15 @@
 {
   "name": "react-object-component",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A react component for json or object in browser",
   "types": "build/index.d.ts",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc"
   },
   "repository": "@github.com:hateVtubers/react-object-component.git",
   "homepage": "https://github.com/hateVtubers/react-object-component#readme",
-  "files": [
-    "lib/**"
-  ],
   "keywords": [
     "react",
     "react-component",
