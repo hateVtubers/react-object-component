@@ -1,6 +1,6 @@
 {
   "name": "react-object-component",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A react component for json or object in browser",
   "types": "build/index.d.ts",
   "scripts": {
@@ -10,12 +10,13 @@
   "repository": "@github.com:hateVtubers/react-object-component.git",
   "homepage": "https://github.com/hateVtubers/react-object-component#readme",
   "files": [
-    "build/**"
+    "lib/**"
   ],
   "keywords": [
     "react",
     "react-component",
-    "json"
+    "json",
+    "browser"
   ],
   "author": "hateVtubers",
   "license": "MIT",

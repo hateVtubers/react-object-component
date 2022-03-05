@@ -8,6 +8,7 @@ export type Config = {
   brackets?: string;
   comma?: string;
   colon?: string;
+  indent?: string;
 };
 
 const Custom = ({
@@ -58,13 +59,13 @@ const Objects = ({ object, getType, classNames }: ObjectsProps) => {
   return (
     <>
       <code className={classNames?.brackets}>{'{'}</code>
-      <ul className='pl-3'>
+      <ul className={classNames?.indent}>
         {Object.entries(object).map(([key, value]) => (
           <li key={key}>
             <span className={classNames?.doubleQuotes}>"</span>
             <span className={classNames?.textKey}>{key}</span>
             <span className={classNames?.doubleQuotes}>"</span>
-            <code className={`mr-1 ${classNames?.colon}`}>:</code>
+            <code className={classNames?.colon}>:</code>
             {getType(value) === 'string' && (
               <String
                 value={value}
@@ -123,7 +124,7 @@ export const JSON = ({
       {Array.isArray(json) ? (
         <>
           <code className={classNames?.brackets}>{'['}</code>
-          <ul className='pl-3'>
+          <ul className={classNames?.indent}>
             {json.map((item, i) => (
               <li key={i}>
                 {getType(item) === 'string' && (

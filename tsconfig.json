@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "ES2017"],
     "declaration": true,
-    "outDir": "./build",
+    "outDir": "./lib",
     "rootDir": "./src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,5 +14,5 @@
     "baseUrl": ".",
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "lib"]
 }

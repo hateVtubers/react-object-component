@@ -72,6 +72,7 @@ export type Config = {
   brackets?: string; // className of brackets, {} and []
   comma?: string; // className of comma, ,
   colon?: string; // className of colon, :
+  ident?: string; // className of ident, space
 };
 ```
 
@@ -89,7 +90,8 @@ const app = () => {
           doubleQuotes: 'text-green-500',
           textValue: 'text-sky-500', // object value and array is value
           textKey: 'text-orange-500', // object key
-          colon: 'text-yellow-500',
+          colon: 'mr-1 text-yellow-500',
+          ident: 'pl-3', // ident space
         }}
       />
     </div>
