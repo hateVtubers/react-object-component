@@ -1,9 +1,13 @@
 {
   "name": "react-object-component",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A react component for json or object in browser",
-  "types": "build/index.d.ts",
+  "types": "lib/index.d.ts",
   "main": "index.js",
+  "files": [
+    "lib/index.js",
+    "lib/index.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc"
