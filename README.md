@@ -1,15 +1,18 @@
 # react-object-component
+
 An react component that renders objects or arrays in browser as jsons
+
+## Before to use you need tailwindcss installed
+
+this library have dependency from tailwindcss
+
+- [install tailwind](https://tailwindcss.com/docs/installation)
 
 ## install
 
 ```bash
 npm install react-object-component@latest
 ```
-
-## Before to use you need tailwindcss installing
-this library have dependency from tailwindcss
-- [install tailwind](https://tailwindcss.com/docs/installation)
 
 ## Usage
 
@@ -63,13 +66,33 @@ This object is className of JSON elements, we recomment you to use with [tailwin
 
 ```ts
 export type Config = {
-  className?: {
-    textKey?: string; // className of text keys
-    textValue?: string; // className of text values, array is `textValue`
-    doubleQuotes?: string; // className of double quotes
-    brackets?: string; // className of brackets, {} and []
-    comma?: string; // className of comma, ,
-    colon?: string; // className of colon, :
-  };
+  textKey?: string; // className of text keys
+  textValue?: string; // className of text values, array is `textValue`
+  doubleQuotes?: string; // className of double quotes
+  brackets?: string; // className of brackets, {} and []
+  comma?: string; // className of comma, ,
+  colon?: string; // className of colon, :
+};
+```
+
+# Example Config
+
+```tsx
+const app = () => {
+  return (
+    <div>
+      <JSON
+        json={test}
+        classNames={{
+          brackets: 'text-xl',
+          comma: 'text-red-500',
+          doubleQuotes: 'text-green-500',
+          textValue: 'text-sky-500', // object value and array is value
+          textKey: 'text-orange-500', // object key
+          colon: 'text-yellow-500',
+        }}
+      />
+    </div>
+  );
 };
 ```
