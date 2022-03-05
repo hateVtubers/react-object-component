@@ -1,26 +1,106 @@
 import React from 'react';
-import { Custom } from 'src/Custom';
-import { Objects } from 'src/Objects';
-import { String } from 'src/String';
 
-export type Json = object | object[] | string[] | boolean[] | null[];
+type Json = object | object[] | string[] | boolean[] | null[];
 export type Config = {
-  className?: {
-    textKey?: string;
-    textValue?: string;
-    doubleQuotes?: string;
-    brackets?: string;
-    comma?: string;
-    colon?: string;
-  };
+  textKey?: string;
+  textValue?: string;
+  doubleQuotes?: string;
+  brackets?: string;
+  comma?: string;
+  colon?: string;
 };
 
-type Props = {
+const Custom = ({
+  value,
+  comma,
+  textValue,
+}: {
+  value: string;
+  comma?: string;
+  textValue?: string;
+}) => {
+  return (
+    <>
+      <span className={textValue}>{`${value}`}</span>
+      <code className={comma}>,</code>
+    </>
+  );
+};
+
+const String = ({
+  value,
+  doubleQuotes,
+  comma,
+  textValue,
+}: {
+  value: string;
+  doubleQuotes?: string;
+  comma?: string;
+  textValue?: string;
+}) => {
+  return (
+    <>
+      <span className={doubleQuotes}>"</span>
+      <span className={textValue}>{value}</span>
+      <span className={doubleQuotes}>"</span>
+      <code className={comma}>,</code>
+    </>
+  );
+};
+
+type ObjectsProps = {
+  object: object;
+  getType: (type: Json) => 'string' | 'array' | 'custom' | 'object';
+  classNames?: Config;
+};
+
+const Objects = ({ object, getType, classNames }: ObjectsProps) => {
+  return (
+    <>
+      <code className={classNames?.brackets}>{'{'}</code>
+      <ul className='pl-3'>
+        {Object.entries(object).map(([key, value]) => (
+          <li key={key}>
+            <span className={classNames?.doubleQuotes}>"</span>
+            <span className={classNames?.textKey}>{key}</span>
+            <span className={classNames?.doubleQuotes}>"</span>
+            <code className={`mr-1 ${classNames?.colon}`}>:</code>
+            {getType(value) === 'string' && (
+              <String
+                value={value}
+                comma={classNames?.comma}
+                doubleQuotes={classNames?.doubleQuotes}
+                textValue={classNames?.textValue}
+              />
+            )}
+            {getType(value) === 'custom' && (
+              <Custom
+                value={value}
+                comma={classNames?.comma}
+                textValue={classNames?.textValue}
+              />
+            )}
+            {(getType(value) === 'array' || getType(value) === 'object') && (
+              <JSON json={value} classNames={classNames} />
+            )}
+          </li>
+        ))}
+      </ul>
+      <code className={classNames?.brackets}>
+        {'}'}
+        <code className={classNames?.comma}>{','}</code>
+      </code>
+    </>
+  );
+};
+
+export const JSON = ({
+  json,
+  classNames,
+}: {
   json: any | any[];
-  config?: Config;
-};
-
-export const JSON = ({ json, config }: Props) => {
+  classNames?: Config;
+}) => {
   const getType = (type: Json) => {
     switch (typeof type) {
       case 'string':
@@ -42,42 +122,46 @@ export const JSON = ({ json, config }: Props) => {
     <>
       {Array.isArray(json) ? (
         <>
-          <code className={config?.className?.brackets}>{'['}</code>
+          <code className={classNames?.brackets}>{'['}</code>
           <ul className='pl-3'>
             {json.map((item, i) => (
               <li key={i}>
                 {getType(item) === 'string' && (
                   <String
                     value={item}
-                    comma={config?.className?.comma}
-                    doubleQuotes={config?.className?.doubleQuotes}
-                    textValue={config?.className?.textValue}
+                    comma={classNames?.comma}
+                    doubleQuotes={classNames?.doubleQuotes}
+                    textValue={classNames?.textValue}
                   />
                 )}
                 {getType(item) === 'custom' && (
                   <Custom
                     value={item}
-                    comma={config?.className?.comma}
-                    textValue={config?.className?.textValue}
+                    comma={classNames?.comma}
+                    textValue={classNames?.textValue}
                   />
                 )}
                 {getType(item) === 'array' && (
-                  <JSON json={item} config={config} />
+                  <JSON json={item} classNames={classNames} />
                 )}
                 {getType(item) === 'object' && (
-                  <Objects object={item} getType={getType} config={config} />
+                  <Objects
+                    object={item}
+                    getType={getType}
+                    classNames={classNames}
+                  />
                 )}
               </li>
             ))}
           </ul>
-          <code className={config?.className?.brackets}>
+          <code className={classNames?.brackets}>
             {']'}
-            <code className={config?.className?.comma}>{','}</code>
+            <code className={classNames?.comma}>{','}</code>
           </code>
         </>
       ) : (
         <>
-          <Objects object={json} getType={getType} config={config} />
+          <Objects object={json} getType={getType} classNames={classNames} />
         </>
       )}
     </>
