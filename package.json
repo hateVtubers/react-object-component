@@ -1,6 +1,6 @@
 {
   "name": "react-object-component",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A react component for json or object in browser",
   "types": "build/index.d.ts",
   "scripts": {
