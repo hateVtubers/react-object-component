@@ -7,7 +7,7 @@ An react component that renders objects or arrays in browser as jsons
 npm install react-object-component@latest
 ```
 
-## Before to use you neend tailwindCss installing
+## Before to use you need tailwindcss installing
 this library have dependency from tailwindcss
 - [install tailwind](https://tailwindcss.com/docs/installation)
 
